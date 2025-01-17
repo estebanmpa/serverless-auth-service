@@ -6,7 +6,7 @@ deploy_develop:
   image: google/cloud-sdk:alpine
   environment: DEVELOP
   only:
-  - deploy
+  - develop
   script:
   - echo $GCP_CLOUD_BUILD_SERVICE_KEY > /tmp/gcloud-service-key.json
   - gcloud auth activate-service-account --key-file /tmp/gcloud-service-key.json
