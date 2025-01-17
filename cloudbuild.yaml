@@ -1,0 +1,35 @@
+substitutions:
+    _NAME: 'gcr.io/$PROJECT_ID/migration-assistant-server'
+options:
+    substitution_option: 'ALLOW_LOOSE'
+steps:
+# Install
+- name: 'node'
+  entrypoint: 'yarn'
+  args: [ 'install' ]
+# Tests
+- name: 'node'
+  entrypoint: 'yarn'
+  args: [ 'test' ]
+# Build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [
+    'build',
+    '-t', '$_NAME,
+    '-f', './Dockerfile.prod',
+    '.' ]
+# Push image
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'push', '$_NAME' ]
+# Deploy to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args: [
+    'run',
+    'deploy',
+    'migration-assistant-server',
+    '--image', '$_NAME',
+    '--region', 'us-east1',
+    '--platform', 'managed',
+    '--allow-unauthenticated',
+    '--port', '3000' ]
