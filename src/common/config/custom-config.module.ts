@@ -6,7 +6,7 @@ import configuration from "./configuration.js";
     imports: [ConfigModule.forRoot({
         load: [configuration],
         isGlobal: true,
-        //envFilePath: ['.env.local', '.env.prod']
+        envFilePath: ['.env']
     })]
 })
 export class CustomConfigModule { }

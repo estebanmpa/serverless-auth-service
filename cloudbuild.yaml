@@ -1,5 +1,5 @@
 substitutions:
-    _NAME: 'gcr.io/$PROJECT_ID/migration-assistant-server'
+    _NAME: 'gcr.io/$PROJECT_ID/migration-assistant-auth-server'
 options:
     substitution_option: 'ALLOW_LOOSE'
 steps:
@@ -27,7 +27,7 @@ steps:
   args: [
     'run',
     'deploy',
-    'migration-assistant-server',
+    'migration-assistant-auth-server',
     '--image', '$_NAME',
     '--region', 'us-east1',
     '--platform', 'managed',
