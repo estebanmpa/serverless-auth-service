@@ -1,0 +1,25 @@
+name: Deploy to GCP
+
+on:
+  push:
+    branches:
+      - feature/move-to-github-actions
+
+jobs:
+  deploy_develop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Authenticate with Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CLOUD_BUILD_SERVICE_KEY }}
+
+      - name: Configure gcloud
+        run: |
+          gcloud config set project ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Submit build to Google Cloud Build
+        run: gcloud builds submit . --region=us-east1 --config=cloudbuild.yaml

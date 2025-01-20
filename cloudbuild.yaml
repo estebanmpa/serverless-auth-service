@@ -13,11 +13,7 @@ steps:
   args: [ 'test' ]
 # Build image
 - name: 'gcr.io/cloud-builders/docker'
-  args: [
-    'build',
-    '-t', '$_NAME,
-    '-f', './Dockerfile.prod',
-    '.' ]
+  args: [ 'build', '-t', '$_NAME', '-f', './Dockerfile.prod', '.' ]
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'push', '$_NAME' ]
