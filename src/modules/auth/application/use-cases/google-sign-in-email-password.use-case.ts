@@ -14,7 +14,7 @@ export class GoogleSignInEmailPasswordUseCase {
      */
     handle = async (email: string, password: string): Promise<string> => {
         const apiKey: string = this.config.get<string>("google.apiKey");
-        const url: string = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`;
+        const url: string = this.config.get<string>("google.apiAuthUrl").replace("<key>", apiKey);
 
         try {
             const response = await axios.post(url, { email, password, returnSecureToken: true });

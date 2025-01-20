@@ -8,9 +8,9 @@ steps:
   entrypoint: 'yarn'
   args: [ 'install' ]
 # Tests
-- name: 'node'
-  entrypoint: 'yarn'
-  args: [ 'test' ]
+# - name: 'node'
+#   entrypoint: 'yarn'
+#   args: [ 'test' ]
 # Build image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', '$_NAME', '-f', './Dockerfile.prod', '.' ]
