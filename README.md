@@ -4,6 +4,7 @@
 ## Table Of Contents##
 - [Getting Started](#getting-started)
   - [Environment Variables](#environment-variables)
+  - [Github Environment Variables](#github-environment-variables)
   - [Project setup](#project-setup)
   - [Compile and run the project](#compile-and-run-the-project)
   - [Run tests](#run-tests)
@@ -15,8 +16,16 @@
 Create .env file in the root of project with the following content.
 
 ```
-LISTEN_PORT=
-GOOGLE_API_KEY=
+LISTEN_PORT=      // Service listen port
+GOOGLE_API_KEY=   // Google Cloud Service Account API Key
+```
+
+#### Github Environment Variables ####
+Create github actions secrets.
+
+```
+GCP_PROJECT_ID=                // Google Cloud Project ID
+GCP_CLOUD_BUILD_SERVICE_KEY=   // Google Cloud Service Account 
 ```
 
 #### Project setup ####

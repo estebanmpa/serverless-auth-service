@@ -1,26 +1,26 @@
 steps:
 # Install
-- name: 'node'
-  entrypoint: 'yarn'
-  args: [ 'install' ]
+# - name: 'node'
+#   entrypoint: 'yarn'
+#   args: [ 'install' ]
 # Tests
 # - name: 'node'
 #   entrypoint: 'yarn'
 #   args: [ 'test' ]
 # Build image
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/migration-assistant-auth-server', '-f', './Dockerfile.prod', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/gcp-auth-service', '-f', './Dockerfile.prod', '.' ]
 # Push image
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'push', 'gcr.io/$PROJECT_ID/migration-assistant-auth-server' ]
+  args: [ 'push', 'gcr.io/$PROJECT_ID/gcp-auth-service' ]
 # Deploy to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: 'gcloud'
   args: [
     'run',
     'deploy',
-    'migration-assistant-auth-server',
-    '--image', 'gcr.io/$PROJECT_ID/migration-assistant-auth-server',
+    'gcp-auth-service',
+    '--image', 'gcr.io/$PROJECT_ID/gcp-auth-service',
     '--region', 'us-east1',
     '--platform', 'managed',
     '--allow-unauthenticated',
