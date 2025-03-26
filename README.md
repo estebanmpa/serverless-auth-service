@@ -114,3 +114,10 @@ POST <cloud-run-url>/auth/login
     "password": "123456"
 }
 ```
+
+## Powered By
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://img.shields.io/badge/react-1DA1F2?style=for-the-badge&logo=react&logoColor=white" /></a>
+  <a href="https://cloud.google.com/" target="blank"><img src="https://img.shields.io/badge/-Google%20Cloud%20Platform-4285F4?style=flat&logo=google%20cloud&logoColor=white" /></a>
+  <a href="https://www.docker.com/" target="blank"><img src="https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white" /></a>
+</p>
