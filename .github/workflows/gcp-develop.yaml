@@ -3,7 +3,7 @@ name: Deploy to GCP
 on:
   push:
     branches:
-      - feature/move-to-github-actions
+      - main
 
 jobs:
   deploy_develop:
